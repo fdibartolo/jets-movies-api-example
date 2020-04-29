@@ -89,7 +89,6 @@ GEM
       aws-eventstream (~> 1.0, >= 1.0.2)
     aws_config (0.1.0)
     builder (3.2.4)
-    byebug (11.1.3)
     capybara (3.32.1)
       addressable
       mini_mime (>= 0.1.3)
@@ -107,10 +106,11 @@ GEM
     crass (1.0.6)
     diff-lcs (1.3)
     dotenv (2.7.5)
-    dynomite (1.2.5)
-      activesupport
-      aws-sdk-dynamodb
-      rainbow
+    dynamoid (3.5.0)
+      activemodel (>= 4)
+      aws-sdk-dynamodb (~> 1.0)
+      concurrent-ruby (>= 1.0)
+      null-logger
     erubi (1.9.0)
     gems (1.2.0)
     globalid (0.4.2)
@@ -176,6 +176,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    null-logger (0.1.7)
     public_suffix (4.0.4)
     puma (4.3.3)
       nio4r (~> 2.0)
@@ -226,9 +227,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  byebug
   capybara
-  dynomite
+  dynamoid
   jets
   launchy
   puma
