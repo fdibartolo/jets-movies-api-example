@@ -10,3 +10,5 @@ bundled
 coverage
 pkg
 tmp
+
+/db/dynamodb_local_latest
