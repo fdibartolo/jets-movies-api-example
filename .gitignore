@@ -11,4 +11,10 @@ coverage
 pkg
 tmp
 
+
+# data
 /db/dynamodb_local_latest
+
+# terraform
+/infra/.terraform
+/infra/terraform.tfstate*
