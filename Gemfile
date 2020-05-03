@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "jets"
 gem "dynamoid"
 gem "foreman"
+gem "term-ansicolor"
 
 # development and test groups are not bundled as part of the deployment
 group :development, :test do
