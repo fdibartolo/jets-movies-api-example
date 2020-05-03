@@ -62,4 +62,15 @@ Jets.application.configure do
   # config.logger = Jets::Logger.new($strerr)
 
   config.controllers.default_protect_from_forgery = false
+
+  # TODO: check why this app level permissions are not sticking into CF template, so using 
+  # workaround with class_iam_policy within controller class
+  # config.iam_policy = [
+  #   Jets::Application.default_iam_policy,
+  #   {
+  #     action: ["dynamodb:*"],
+  #     effect: "Allow",
+  #     resource: "arn:aws:dynamodb:#{Jets.aws.region}:#{Jets.aws.account}:table/#{Dynamoid.config.namespace}_*",
+  #   }
+  # ]
 end

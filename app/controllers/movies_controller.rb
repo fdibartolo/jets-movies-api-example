@@ -1,4 +1,5 @@
 class MoviesController < ApplicationController
+  class_iam_policy("dynamodb")
   before_action :set_movie, only: [:show, :update, :delete]
 
   # GET /movies
