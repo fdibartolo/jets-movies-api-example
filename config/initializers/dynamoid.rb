@@ -3,7 +3,6 @@ Dynamoid.configure do |config|
   parsed = YAML.load(ERB.new(File.read(config_path)).result)[Jets.env]
   namespace, endpoint = parsed['namespace'], parsed['endpoint']
 
-  puts "configuring dynamodb with: namespace=#{namespace}, endpoint=#{endpoint}...".green
   config.namespace = namespace
   config.endpoint = endpoint
 
