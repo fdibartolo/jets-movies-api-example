@@ -18,23 +18,25 @@ namespace :movies_api do
 
   desc "Deploys new stack into aws"
   task :aws_deploy do
-    puts "Provisioning dynamodb table if needed...".yellow
-    Dir.chdir("infra") { system "terraform apply -auto-approve" }
-    puts "Done provisioning table!".green
+    puts "Syncing dynamodb table if needed...".yellow
+    prefix = `JETS_ENV=staging jets runner 'puts Jets.config.table_namespace'`.split("\n")[-1] # HELL OF A HACK :|
+    Dir.chdir("infra") { system "terraform apply -var 'tablename=#{prefix}_movies' -auto-approve" }
+    puts "Dynamodb table synced!".green
 
-    puts "Provisioning lambdas and endpoints if needed...".yellow
-    system "jets deploy"
+    puts "Provisioning lambdas, endpoints if needed...".yellow
+    system "JETS_ENV=staging jets deploy"
     puts "Done!".green
   end
 
   desc "Destroys aws stack"
   task :aws_destroy do
+    # TODO: ask for confirmation once, and force both ops below
     puts "Destroying dynamodb table...".yellow
-    Dir.chdir("infra") { system "terraform destroy" }
+    Dir.chdir("infra") { system "terraform destroy -var 'tablename=x'" }
     puts "Done destroying table!".green
 
-    puts "Destroying lambdas and endpoints...".yellow
-    system "jets delete"
+    puts "Destroying lambdas, endpoints...".yellow
+    system "JETS_ENV=staging jets delete"
     puts "Done!".green
   end
 end
