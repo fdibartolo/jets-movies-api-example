@@ -1,0 +1,13 @@
+default: &default
+  namespace: <%= Jets.config.table_namespace %>
+
+development:
+  <<: *default
+  endpoint: 'http://localhost:8000'
+
+test:
+  <<: *default
+  endpoint: 'http://localhost:8000'
+
+production:
+  <<: *default

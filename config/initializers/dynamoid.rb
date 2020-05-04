@@ -1,11 +1,11 @@
 Dynamoid.configure do |config|
-  # To namespace tables created by Dynamoid from other tables you might have.
-  # Set to nil to avoid namespacing.
-  config.namespace = 'movies_api'
+  config_path = "#{Jets.root}/config/dynamodb.yml"
+  parsed = YAML.load(ERB.new(File.read(config_path)).result)[Jets.env]
+  namespace, endpoint = parsed['namespace'], parsed['endpoint']
 
-  # [Optional]. If provided, it communicates with the DB listening at the endpoint.
-  # This is useful for testing with [DynamoDB Local] (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tools.DynamoDBLocal.html).
-  config.endpoint = 'http://localhost:8000' if ENV['LOCAL']
+  puts "configuring dynamodb with: namespace=#{namespace}, endpoint=#{endpoint}...".green
+  config.namespace = namespace
+  config.endpoint = endpoint
 
   config.read_capacity = 10 # Read capacity for your tables
   config.write_capacity = 10 # Write capacity for your tables
