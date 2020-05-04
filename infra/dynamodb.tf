@@ -2,8 +2,12 @@ provider "aws" {
   region = "sa-east-1"
 }
 
-resource "aws_dynamodb_table" "basic-dynamodb-table" {
-  name           = "movies_api_movies"
+variable "tablename" {
+  type = string
+}
+
+resource "aws_dynamodb_table" "movies-table" {
+  name           = var.tablename
   billing_mode   = "PROVISIONED"
   read_capacity  = 10
   write_capacity = 10
