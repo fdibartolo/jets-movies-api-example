@@ -9,5 +9,8 @@ test:
   <<: *default
   endpoint: 'http://localhost:8000'
 
+staging:
+  <<: *default
+
 production:
   <<: *default
