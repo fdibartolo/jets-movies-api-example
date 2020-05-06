@@ -4,7 +4,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Building..'
+        // bundle any newly added gems
+        sh 'bundle install'
       }
     }
     stage('Test') {
