@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        echo 'Deploying....'
+        sh 'jets movies_api:aws_deploy'
       }
     }
   }
