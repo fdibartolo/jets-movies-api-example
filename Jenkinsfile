@@ -18,7 +18,9 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'jets movies_api:aws_deploy'
+        withAWS(credentials: 'jets_iam', region: 'sa-east-1') {
+          sh 'jets movies_api:aws_deploy'
+        }
       }
     }
   }
