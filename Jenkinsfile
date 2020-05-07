@@ -1,6 +1,9 @@
 pipeline {
   agent {
-    docker { image 'ruby:2.5' }
+    dockerfile {
+      filename 'Dockerfile.agent'
+      dir 'ci'
+    }
   }
 
   stages {
@@ -19,6 +22,7 @@ pipeline {
     stage('Deploy') {
       steps {
         withAWS(credentials: 'jets_iam', region: 'sa-east-1') {
+          sh 'terraform -v'
           sh 'jets movies_api:aws_deploy'
         }
       }

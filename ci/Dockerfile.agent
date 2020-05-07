@@ -1,0 +1,7 @@
+FROM ruby:2.5
+ 
+USER root
+RUN apt-get update -qq && apt-get install -qqy rsync
+
+RUN wget -q -O terraform.zip https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip && unzip terraform.zip && rm terraform.zip
+RUN mv ./terraform /usr/local/bin/terraform
