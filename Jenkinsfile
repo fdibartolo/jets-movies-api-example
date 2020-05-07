@@ -1,11 +1,13 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'ruby:2.5-alpine' }
+  }
 
   stages {
     stage('Build') {
       steps {
         // bundle any newly added gems
-        sh 'bundle install'
+        sh 'ruby -v'
       }
     }
     stage('Test') {
