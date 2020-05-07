@@ -8,6 +8,8 @@ pipeline {
       steps {
         // bundle any newly added gems
         sh 'ruby -v'
+        sh 'gem list'
+        sh 'bundle install'
       }
     }
     stage('Test') {
