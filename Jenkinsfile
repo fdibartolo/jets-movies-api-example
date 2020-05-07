@@ -6,15 +6,14 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        // bundle any newly added gems
         sh 'ruby -v'
-        sh 'gem list'
+        // bundle any newly added gems
         sh 'bundle install'
       }
     }
     stage('Test') {
       steps {
-        echo 'Testing..'
+        sh 'rspec spec/'
       }
     }
     stage('Deploy') {
