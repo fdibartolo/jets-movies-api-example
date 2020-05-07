@@ -3,6 +3,7 @@ pipeline {
     docker { 
       image 'ruby:2.5'
       image 'hashicorp/terraform:light'
+      args '-i --entrypoint='
     }
   }
 
