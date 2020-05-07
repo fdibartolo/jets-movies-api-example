@@ -1,6 +1,9 @@
 pipeline {
   agent {
-    docker { image 'ruby:2.5' }
+    docker { 
+      image 'ruby:2.5'
+      image 'hashicorp/terraform:light'
+    }
   }
 
   stages {
