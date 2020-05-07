@@ -6,6 +6,10 @@ pipeline {
     }
   }
 
+  environment {
+    JETS_AGREE = 'yes'
+  }
+
   stages {
     stage('Build') {
       steps {
@@ -23,6 +27,7 @@ pipeline {
       steps {
         withAWS(credentials: 'jets_iam', region: 'sa-east-1') {
           sh 'terraform -v'
+          sh 'terraform init -input=false ./infra'
           sh 'jets movies_api:aws_deploy'
         }
       }
