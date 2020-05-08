@@ -14,7 +14,6 @@ pipeline {
     stage('Build') {
       steps {
         sh 'ruby -v'
-        // bundle any newly added gems
         sh 'bundle install'
       }
     }
@@ -25,7 +24,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        withAWS(credentials: 'jets_iam', region: 'sa-east-1') {
+        withAWS(credentials: 'jets_iam_user', region: 'sa-east-1') {
           sh 'terraform -v'
           sh 'jets movies_api:deploy_init'
           sh 'jets movies_api:aws_deploy'
