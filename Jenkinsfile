@@ -3,7 +3,6 @@ pipeline {
     dockerfile {
       filename 'Dockerfile.agent'
       dir 'ci'
-      args '-v /volumes:/var/jenkins_home'
     }
   }
 
