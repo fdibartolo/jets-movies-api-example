@@ -3,7 +3,7 @@ pipeline {
     dockerfile {
       filename 'Dockerfile.agent'
       dir 'ci'
-      args '-v volumes/bundle:/usr/local/bundle -v volumnes/ruby:/root/.gem/ruby -v volumes/gems:/usr/local/lib/ruby/gems'
+      args '-v volumes/bundle:/usr/local/bundle -v volumes/ruby:/root/.gem/ruby -v volumes/gems:/usr/local/lib/ruby/gems'
     }
   }
 
