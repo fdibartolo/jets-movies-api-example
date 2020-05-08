@@ -3,6 +3,7 @@ pipeline {
     dockerfile {
       filename 'Dockerfile.agent'
       dir 'ci'
+      args '-v volumes/bundle:/usr/local/bundle -v volumnes/ruby:/root/.gem/ruby -v volumes/gems:/usr/local/lib/ruby/gems'
     }
   }
 
@@ -15,7 +16,6 @@ pipeline {
       steps {
         sh 'ruby -v'
         sh 'bundle install'
-        sh 'gem environment'
       }
     }
     stage('Test') {
