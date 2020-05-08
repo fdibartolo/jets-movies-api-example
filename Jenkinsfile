@@ -15,6 +15,7 @@ pipeline {
       steps {
         sh 'ruby -v'
         sh 'bundle install'
+        sh 'gem environment'
       }
     }
     stage('Test') {
