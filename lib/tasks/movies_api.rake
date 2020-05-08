@@ -16,6 +16,12 @@ namespace :movies_api do
     system "bin/start"
   end
 
+  desc "Meant to be run within CI server, in order to init tool stack"
+  task :deploy_init do
+    Dir.chdir("infra") { system "terraform init -input=false" }
+    Dir.chdir("infra") { system "terraform plan -var 'tablename=dummy' -input=false" }
+  end
+
   desc "Deploys new stack into aws"
   task :aws_deploy do
     puts "Starting deployment...".yellow

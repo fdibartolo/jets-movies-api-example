@@ -27,8 +27,7 @@ pipeline {
       steps {
         withAWS(credentials: 'jets_iam', region: 'sa-east-1') {
           sh 'terraform -v'
-          sh 'cd infra && terraform init -input=false'
-          sh 'cd infra && terraform plan -var "tablename=test" -input=false'
+          sh 'jets movies_api:deploy_init'
           sh 'jets movies_api:aws_deploy'
         }
       }
