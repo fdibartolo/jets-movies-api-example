@@ -19,3 +19,6 @@ tmp
 # terraform
 /infra/.terraform
 /infra/terraform.tfstate*
+
+# aux local notes
+notes.txt
