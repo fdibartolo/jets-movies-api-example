@@ -1,16 +1,20 @@
 namespace :movies_api do
   namespace :db do
+    desc "Checks if dynamodb is running"
+    task :dynamo_up do
+      pids = IO.popen("ps aux | grep -E 'DynamoDBLocal.jar' | grep -v grep | awk '{print $2}'").readlines.to_a
+      raise "=> No dynamodb instance seem to be running.".red if pids.empty?
+    end
+
     desc "Drops all tables and regenerates them"
-    task :reset do
-      Dynamoid::Config.logger=false
-      Rake::Task["movies_api:db:drop"].execute
+    task :reset => [:drop] do
       puts "=> Creating tables...".yellow
       Dynamoid.included_models.each { |m| m.create_table(sync: true) }
       puts "=> Done!".green
     end
 
     desc "Seeds tables with files db/sample_*.json"
-    task :seed do
+    task :seed => [:dynamo_up] do
       Dynamoid::Config.logger=false
       Rake::Task["movies_api:db:reset"].execute if Dynamoid.adapter.list_tables.empty?
       puts "=> Seeding tables...".yellow
@@ -20,7 +24,7 @@ namespace :movies_api do
     end
 
     desc "Drops all tables"
-    task :drop do
+    task :drop => [:dynamo_up] do
       Dynamoid::Config.logger=false
       puts "=> Dropping tables...".yellow
       Dynamoid.adapter.list_tables.each do |table|
