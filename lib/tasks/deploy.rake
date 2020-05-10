@@ -1,21 +1,4 @@
 namespace :movies_api do
-  desc "Starts app and database instance locally"
-  task :start do
-    ENV['LOCAL'] = 'true'
-    puts "\nStarting local instance of the app with #{"LOCAL".green.bold} instance of dynamodb...\n\n"
-
-    # create tables if needed, silently, on a new process
-    Process.fork do
-      sleep 5 # HACK, wait for dynamodb to start (below...)
-      puts "Syncing dynamodb table...".yellow
-      result = `jets runner 'Dynamoid.included_models.each { |m| m.create_table(sync: true) }'`
-      puts "Dynamodb table synced!".green if $?.success?
-    end    
-
-    # start verbosely via foreman
-    system "bin/start"
-  end
-
   desc "Meant to be run within CI server, in order to init tool stack"
   task :deploy_init do
     Dir.chdir("infra") { system "terraform init -input=false" }
