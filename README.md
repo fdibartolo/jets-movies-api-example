@@ -18,9 +18,15 @@ A few things needs to be done as a one-time-activity...
 <a name="unzip"></a>
 2. Extract the downloaded zip file into the `db` folder. Keep track of the folder name that was created while extracting the file, you _might_ need it below :grimacing:... (unless the name is _dynamodb_local_latest_ :+1:).
 
+Now, to create the tables, just run:
+
+ `$ jets movies_api:db:reset`
+
 #### Database seed (optional)
 
-_TBD_
+If needed, you can create some dummy data by running:
+
+ `$ jets movies_api:db:seed`
 
 #### Starting local instance
 
@@ -31,7 +37,7 @@ The project leverages [foreman](https://github.com/ddollar/foreman) in order to 
 
 In order to start the local instance, just run:
 
-  `$ bin/start`
+ `$ bin/start`
 
 > for the very first time, you might need to give executable permissions to the script: `$ chmod 777 bin/start`
 
