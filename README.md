@@ -41,8 +41,6 @@ In order to start the local instance, just run:
 
 > for the very first time, you might need to give executable permissions to the script: `$ chmod 777 bin/start`
 
-_TBD delete rake task ??_
-
 ## Deploying to AWS
 
 First thing we need to do is to create a AWS IAM user with the proper policy configuration, so all the resources can be created upon deploying the solution. This can be done through the [AWS console](https://aws.amazon.com/console/), or from the terminal leveraging the _aws-cli_. One way or the other, just follow the official doc: [Minimal Deploy IAM Policy](https://rubyonjets.com/docs/extras/minimal-deploy-iam/). 
