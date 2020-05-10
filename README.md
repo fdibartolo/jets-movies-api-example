@@ -62,7 +62,7 @@ We are now ready to deploy, and for this, there is a convenient rake task that w
 
 `$ jets movies_api:aws_deploy`
 
-The first time you deploy, you might be prompted with the question '_Is it okay to send your gem data to Lambdagems? (Y/n)? _'. The answer is up to you, and it will be remembered for future deployments. If you want to ever switch this decision back and forth, you can use the `JETS_AGREE` env var, by setting it to either '_yes_' or '_no_'. You can learn more about [Lambda Gems](https://rubyonjets.com/docs/lambdagems/) on the official docs.
+The first time you deploy, you might be prompted with the question _'Is it okay to send your gem data to Lambdagems? (Y/n)? '_. The answer is up to you, and it will be remembered for future deployments. If you want to ever switch this decision back and forth, you can use the `JETS_AGREE` env var, by setting it to either '_yes_' or '_no_'. You can learn more about [Lambda Gems](https://rubyonjets.com/docs/lambdagems/) on the official docs.
 
 #### Destroying the aws infra resources
 
