@@ -34,9 +34,11 @@ namespace :movies_api do
 
   desc "Destroys aws stack"
   task :aws_destroy do
-    puts "Are you sure you want to want to delete the project? **There is no undo**. Only 'yes' will be accepted to confirm:".cyan
-    print " -> ".cyan
-    confirm = STDIN.gets
+    confirm = forced? ? 'yes' : (
+      puts "Are you sure you want to want to delete the project? **There is no undo**. Only 'yes' will be accepted to confirm:".cyan
+      print " -> ".cyan
+      confirm = STDIN.gets
+    )
 
     if confirm.chomp == 'yes'
       db_pid = Process.fork do
@@ -62,5 +64,9 @@ namespace :movies_api do
     else
       puts "Destroy project stack aborted!".red
     end
+  end
+
+  def forced?
+    ENV['FORCE_DESTROY']=='true'
   end
 end
