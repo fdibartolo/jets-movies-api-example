@@ -11,6 +11,8 @@ coverage
 pkg
 tmp
 
+# ignore local notes
+notes.txt
 
 # data
 /db/dynamodb_local_latest
