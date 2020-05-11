@@ -1,20 +1,18 @@
 source "https://rubygems.org"
 
-gem "jets"
-gem "dynamoid"
-gem "foreman"
-gem "term-ansicolor"
+gem "jets", "2.3.16"
+gem "dynamoid", "3.5.0"
+gem "foreman", "0.87.1"
+gem "term-ansicolor", "1.7.1"
 
 # development and test groups are not bundled as part of the deployment
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'shotgun'
-  gem 'rack'
-  gem 'puma'
+  gem 'shotgun', '0.9.2'
+  gem 'rack', '2.2.2'
+  gem 'puma', '4.3.3'
 end
 
 group :test do
-  gem 'rspec' # rspec test group only or we get the "irb: warn: can't alias context from irb_context warning" when starting jets console
-  gem 'launchy'
-  gem 'capybara'
+  gem 'rspec', '3.9.0' # rspec test group only or we get the "irb: warn: can't alias context from irb_context warning" when starting jets console
 end
