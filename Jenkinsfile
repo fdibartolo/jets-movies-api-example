@@ -8,6 +8,7 @@ pipeline {
 
   environment {
     JETS_AGREE = 'yes'
+    FORCE_DESTROY = 'true'
   }
 
   stages {
@@ -28,6 +29,14 @@ pipeline {
           sh 'terraform -v'
           sh 'jets movies_api:deploy_init'
           sh 'jets movies_api:aws_deploy'
+        }
+      }
+    }
+    stage('Destroy') {
+      steps {
+        withAWS(credentials: 'jets_iam_user', region: 'sa-east-1') {
+          input message: 'Finished using the site? (click "Proceed" to destroy infra resources)'
+          sh 'jets movies_api:aws_destroy'
         }
       }
     }
