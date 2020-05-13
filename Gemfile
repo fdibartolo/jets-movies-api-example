@@ -7,7 +7,6 @@ gem "term-ansicolor", "1.7.1"
 
 # development and test groups are not bundled as part of the deployment
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'shotgun', '0.9.2'
   gem 'rack', '2.2.2'
   gem 'puma', '4.3.3'
