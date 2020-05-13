@@ -11,6 +11,9 @@ coverage
 pkg
 tmp
 
+# local rvm setup
+.ruby-*
+
 # ignore local notes
 notes.txt
 
