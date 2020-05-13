@@ -119,8 +119,11 @@ Let's go ahead and create the user credentials to be used for deployment. This c
 
 #### Deploy job setup
 
-_TBD_
+Create a new job, and while giving it a name of your choice, select the **Pipeline** type. In the configuration page, scroll down to the _Pipeline_ section, and set it up with:
+* Definition: 'Pipeline script from SCM'
+* SCM: 'Git'
+* Repository URL: link to your own clone
 
-#### Destroy job setup
+Thats pretty much it, you can now build it to see your code deployed to AWS. The very last stage of the pipeline is to destroy the resources created, it will need your input to proceed or not. You can select not to destoy it, play around, and once you are done, run a new build to now proceed with the destroy.
 
-_TBD_
+For a full CI/CD experience, the ideal scenario would be to have a webhook configured within github, so jenkins builds would be automatically run upon receiving code updates. For that, you would need your container to be publicly available, feel free to do so if thats your goal.
