@@ -8,12 +8,12 @@ This is a demo [RubyOnJets](http://rubyonjets.com/) project, meant to be used as
 * [Terraform](https://www.terraform.io/), **only if** deploying from local workstation
 * [Docker](https://docs.docker.com/get-docker/), **only if** deploying from local Jenkins container
 
-> as of now, jets depends on ruby ~> 2.5, so make sure you use a revision under this version, 2.5.3 in my case. 
+> as of now, jets depends on ruby ~> 2.5, so make sure you use a revision within this version, 2.5.3 in my case. 
 
 ## Development
 
 #### Database Setup
-A few things needs to be done as a one-time-activity...
+A few things need to be done as a one-time-activity...
 1. If not present, you need to download [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html), to be used while running locally.
 <a name="unzip"></a>
 2. Extract the downloaded zip file into the `db` folder. Keep track of the folder name that was created while extracting the file, you _might_ need it below :grimacing:... (unless the name is _dynamodb_local_latest_ :+1:).
