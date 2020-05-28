@@ -9,7 +9,7 @@ gem "term-ansicolor", "1.7.1"
 group :development, :test do
   gem 'shotgun', '0.9.2'
   gem 'rack', '2.2.2'
-  gem 'puma', '4.3.3'
+  gem 'puma', '4.3.5'
 end
 
 group :test do
