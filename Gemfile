@@ -8,7 +8,7 @@ gem "term-ansicolor", "1.7.1"
 # development and test groups are not bundled as part of the deployment
 group :development, :test do
   gem 'shotgun', '0.9.2'
-  gem 'rack', '2.2.6.2'
+  gem 'rack', '2.2.6.3'
   gem 'puma', '4.3.12'
 end
 
